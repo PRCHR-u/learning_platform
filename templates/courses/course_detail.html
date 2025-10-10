@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+    <h2>Materials</h2>
+    <ul>
+        {% for material in course.materials.all %}
+            <li>{{ material.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
