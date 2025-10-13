@@ -33,7 +33,7 @@ auth_urlpatterns = [
 # Main API URLs
 api_urlpatterns = [
     path('auth/', include(auth_urlpatterns)),
-    path('courses/', include('apps.courses.urls')),
+    path('', include('apps.courses.urls')),
 ]
 
 urlpatterns = [
