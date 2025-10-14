@@ -1,5 +1,4 @@
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
-
-def home(request):
-    return HttpResponse("Hello, world!")
+class TeacherDashboardView(TemplateView):
+    template_name = "teacher_dashboard.html"

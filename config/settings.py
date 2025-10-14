@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'apps.courses',
     'apps.tests',
     'apps.core',
+    'apps.teachers',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',

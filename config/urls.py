@@ -22,6 +22,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from apps.core.views import TeacherDashboardView
 
 # URLs for authentication
 auth_urlpatterns = [
@@ -33,12 +34,14 @@ auth_urlpatterns = [
 # Main API URLs
 api_urlpatterns = [
     path('auth/', include(auth_urlpatterns)),
+    path('teacher/', include('apps.teachers.urls')),
     path('', include('apps.courses.urls')),
 ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(api_urlpatterns)),
+    path('dashboard/', TeacherDashboardView.as_view(), name='dashboard'),
 ]
 
 if settings.DEBUG:
