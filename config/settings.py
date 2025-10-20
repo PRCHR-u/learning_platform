@@ -86,7 +86,14 @@ encoded_password = quote(password, safe='')
 db_url = f'postgresql://user:{encoded_password}@localhost:5432/learning_platform'
 
 DATABASES = {
-    'default': dj_database_url.parse(db_url)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'learning_db',
+        'USER': 'learning_user',
+        'PASSWORD': 'learning123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 
