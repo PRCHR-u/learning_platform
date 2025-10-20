@@ -88,6 +88,9 @@ DATABASES = {
         'PASSWORD': '4aQ7u27Qb64RTVP',
         'HOST': 'localhost',
         'PORT': '5432',
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
 
