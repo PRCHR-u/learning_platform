@@ -3,6 +3,7 @@ from datetime import timedelta
 from pathlib import Path
 from decouple import config, Csv
 import dj_database_url
+from urllib.parse import quote
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,18 +81,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+password = "4aQ7u27Qb64RTVPвот"
+encoded_password = quote(password, safe='')
+db_url = f'postgresql://user:{encoded_password}@localhost:5432/learning_platform'
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'learning_db',
-        'USER': 'user',
-        'PASSWORD': '4aQ7u27Qb64RTVP',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'OPTIONS': {
-            'client_encoding': 'UTF8',
-        },
-    }
+    'default': dj_database_url.parse(db_url)
 }
 
 
