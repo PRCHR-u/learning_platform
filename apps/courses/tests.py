@@ -1,6 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
+
 from apps.courses.models import Course, Material
 from apps.users.models import User
 
@@ -8,17 +9,17 @@ from apps.users.models import User
 class CourseAPITests(APITestCase):
     def setUp(self):
         self.teacher = User.objects.create_user(
-            username='teacher', email='teacher@example.com', 
+            username='teacher', email='teacher@example.com',
             password='password123', role='teacher'
         )
         self.student = User.objects.create_user(
-            username='student', email='student@example.com', 
+            username='student', email='student@example.com',
             password='password123', role='student'
         )
 
         self.course = Course.objects.create(
-            title='Test Course', 
-            description='Course Description', 
+            title='Test Course',
+            description='Course Description',
             owner=self.teacher
         )
         self.course_list_url = reverse('course-list')
@@ -29,7 +30,7 @@ class CourseAPITests(APITestCase):
     def test_teacher_can_create_course(self):
         self.client.force_authenticate(user=self.teacher)
         data = {
-            'title': 'New Course', 
+            'title': 'New Course',
             'description': 'A new course description.'
         }
         response = self.client.post(self.course_list_url, data, format='json')
@@ -38,7 +39,7 @@ class CourseAPITests(APITestCase):
     def test_student_cannot_create_course(self):
         self.client.force_authenticate(user=self.student)
         data = {
-            'title': 'New Course', 
+            'title': 'New Course',
             'description': 'A new course description.'
         }
         response = self.client.post(self.course_list_url, data, format='json')
@@ -64,21 +65,21 @@ class CourseAPITests(APITestCase):
 class MaterialAPITests(APITestCase):
     def setUp(self):
         self.teacher = User.objects.create_user(
-            username='teacher', email='teacher@example.com', 
+            username='teacher', email='teacher@example.com',
             password='password123', role='teacher'
         )
         self.student = User.objects.create_user(
-            username='student', email='student@example.com', 
+            username='student', email='student@example.com',
             password='password123', role='student'
         )
         self.other_teacher = User.objects.create_user(
-            username='other_teacher', email='other@example.com', 
+            username='other_teacher', email='other@example.com',
             password='password123', role='teacher'
         )
 
         self.course = Course.objects.create(
-            title='Test Course', 
-            description='A description', 
+            title='Test Course',
+            description='A description',
             owner=self.teacher
         )
         self.material = Material.objects.create(
@@ -88,7 +89,7 @@ class MaterialAPITests(APITestCase):
             'course-materials-list', kwargs={'course_pk': self.course.pk}
         )
         self.material_detail_url = reverse(
-            'course-materials-detail', 
+            'course-materials-detail',
             kwargs={'course_pk': self.course.pk, 'pk': self.material.pk}
         )
 

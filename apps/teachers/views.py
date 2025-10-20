@@ -1,16 +1,18 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 # Исправленный импорт, указывающий на приложение courses
 from apps.courses.permissions import IsTeacher
+
 
 class TeacherDashboardView(APIView):
     permission_classes = [IsAuthenticated, IsTeacher]
 
     def get(self, request):
-        user = request.user
-        # NOTE: The data is hardcoded as per the user's request for a quick demo.
-        # In a real application, this would be calculated from the database.
+        # NOTE: The data is hardcoded as per the user's request for a
+        # quick demo. In a real application, this would be calculated
+        # from the database.
         return Response({
             'total_students': 1247,
             'active_courses': 8,

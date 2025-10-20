@@ -1,8 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+
 from .models import Course, Material
+from .permissions import IsMaterialCourseOwner, IsOwner, IsTeacher
 from .serializers import CourseSerializer, MaterialSerializer
-from .permissions import IsOwner, IsTeacher, IsMaterialCourseOwner
 
 
 class CourseViewSet(viewsets.ModelViewSet):
