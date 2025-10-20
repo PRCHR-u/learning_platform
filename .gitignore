@@ -5,6 +5,8 @@ env/
 venv/
 ENV/
 .idx/
+.env.docker
+shell.nix
 
 # Django
 db.sqlite3
