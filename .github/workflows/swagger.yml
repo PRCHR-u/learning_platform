@@ -28,7 +28,7 @@ jobs:
       run: openapi-generator-cli generate -i swagger.yaml -g html -o ./docs
 
     - name: Upload API Docs
-      uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
       with:
         name: api-docs
         path: ./docs
