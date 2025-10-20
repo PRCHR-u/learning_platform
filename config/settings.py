@@ -81,7 +81,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://user:password@localhost:5432/learning_platform')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'learning_db',
+        'USER': 'user',
+        'PASSWORD': '4aQ7u27Qb64RTVP',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 
